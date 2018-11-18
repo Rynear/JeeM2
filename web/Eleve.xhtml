@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:head>
-        <title>Facelet Title</title>
+        <title>Page étudiant</title>
     </h:head>
     <h:body>
         
@@ -14,23 +14,23 @@
         <p:fieldset legend="Vous êtes nouveau ici, inscrivez-vous :" toggleable="true" toggleSpeed="500">
             <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
             <h:panelGrid columns="2" cellpadding="5">
-            <h:form id="ajoutEleve">
+            <h:form id="AddNewEleve">
                 <h:panelGrid columns="2" cellpadding="5">
                 <p:outputLabel value="Votre nom :" />
-                <p:inputText value="#{vueEleve.monEleve.nomE}"/>
+                <p:inputText value="#{vueEleve.monNouveauEleve.nomE}"/>
                 <p:outputLabel value="Votre prénom :" />
-                <p:inputText value="#{vueEleve.monEleve.prenomE}"/>
+                <p:inputText value="#{vueEleve.monNouveauEleve.prenomE}"/>
                 <p:outputLabel value="Vous êtes :" />
 
-                <p:selectOneButton value="#{vueEleve.monEleve.sexeE}">
+                <p:selectOneButton value="#{vueEleve.monNouveauEleve.sexeE}">
                     <f:selectItem itemLabel="Un garçon" itemValue="1" />
                     <f:selectItem itemLabel="Une fille" itemValue="2" />
                 </p:selectOneButton>
 
                 <p:outputLabel value="Votre age :" />
-                <p:inputText value="#{vueEleve.monEleve.ageE}"/>
+                <p:inputText value="#{vueEleve.monNouveauEleve.ageE}"/>
                 <p:outputLabel value="Votre niveau scolaire :" />
-                <p:selectOneMenu id="console" value="#{vueEleve.monEleve.niveauE}" style="width:125px">
+                <p:selectOneMenu id="console" value="#{vueEleve.monNouveauEleve.niveauE}" style="width:125px">
                     <f:selectItem itemLabel="CP" itemValue="1" />
                     <f:selectItem itemLabel="CE1" itemValue="2" />
                     <f:selectItem itemLabel="CE2" itemValue="3" />
@@ -47,7 +47,7 @@
 
                 </h:panelGrid>
                 <br />
-                <p:commandButton value="M'enregistrer" action="#{vueEleve.addEleve()}" ajax="false" update="msg"/>
+                <p:commandButton value="M'enregistrer" action="#{vueEleve.addNewEleve()}" ajax="false" update="msg"/>
                 <br /><br />
             </h:form>
             </h:panelGrid>

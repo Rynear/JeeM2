@@ -16,12 +16,17 @@
             <h:panelGrid columns="2" cellpadding="5">
             <h:form id="AddNewEleve">
                 <h:panelGrid columns="2" cellpadding="5">
+                    
                 <p:outputLabel value="Votre nom :" />
                 <p:inputText value="#{vueEleve.monNouveauEleve.nomE}"/>
+                
                 <p:outputLabel value="Votre prénom :" />
                 <p:inputText value="#{vueEleve.monNouveauEleve.prenomE}"/>
+                
+                <p:outputLabel value="Definissez votre mot de passe :" />
+                <p:inputText value="#{vueEleve.monNouveauEleve.mdpE}"/>
+                
                 <p:outputLabel value="Vous êtes :" />
-
                 <p:selectOneButton value="#{vueEleve.monNouveauEleve.sexeE}">
                     <f:selectItem itemLabel="Un garçon" itemValue="1" />
                     <f:selectItem itemLabel="Une fille" itemValue="2" />

@@ -30,6 +30,7 @@ public class VueCours implements Serializable {
     private Integer idP;
     private Date dateC;
     private String comC;
+    private Integer recordIdCours;
     
     /**
      * Creates a new instance of VueCours
@@ -84,6 +85,14 @@ public class VueCours implements Serializable {
 
     public void setComC(String comC) {
         this.comC = comC;
+    }
+
+    public Integer getRecordIdCours() {
+        return recordIdCours;
+    }
+
+    public void setRecordIdCours(Integer recordIdCours) {
+        this.recordIdCours = recordIdCours;
     }
     
     /**

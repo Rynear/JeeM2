@@ -60,5 +60,42 @@
         
         <p:fieldset legend="Tu es inscris et tu recherches un cours:" toggleable="true" toggleSpeed="500">
         </p:fieldset>
+        
+        <p:fieldset legend="Ci dessous la liste des profs" toggleable="true" toggleSpeed="500">
+                <h:form id="ListeProf">
+                    <p:dataTable var="item" value="#{vueProf.listeProf}">
+                    <p:column headerText="Nom">
+                        <h:outputText value="#{item.nomP}"/>
+                    </p:column>
+        
+                    <p:column headerText="Age">
+                        <h:outputText value="#{item.prenomP}"/>
+                    </p:column>
+                        
+                    <p:column headerText="Sexe">
+                        <h:outputText value="#{item.sexeP}"/>
+                    </p:column>
+                
+                    <p:column headerText="Niveau max enseigné">
+                        <h:outputText value="#{item.niveauMaxP}"/>
+                    </p:column>
+                        
+                  </p:dataTable>    
+                </h:form>
+        </p:fieldset>
+        
+      
+
     </h:body>
+
+    <div class="footer">
+      <p>
+          Qui sommes-nous ?
+          <br />
+          Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
+          <br />
+          Rechercher un cours ou un professeur disponible devient plus facile.
+      </p>
+    </div>  
+    
 </html>

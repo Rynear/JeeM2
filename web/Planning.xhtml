@@ -32,16 +32,39 @@
                 border-bottom-color: var(--input-border-color, #A8A8A8);
             }
         </style>
+        
+        <h:form>
+            <p:growl id="choixDuNiveau" showDetail="true" />
+                <p:fieldset legend="Effectuer une recherche de cours par classe :" toggleable="true" toggleSpeed="500">
+                        <p:selectOneMenu id="console" style="width:125px">
+                            <f:selectItem itemLabel="CP" itemValue="1" />
+                            <f:selectItem itemLabel="CE1" itemValue="2" />
+                            <f:selectItem itemLabel="CE2" itemValue="3" />
+                            <f:selectItem itemLabel="CM1" itemValue="4" />
+                            <f:selectItem itemLabel="CM2" itemValue="5" />
+                            <f:selectItem itemLabel="6eme" itemValue="6" />
+                            <f:selectItem itemLabel="5eme" itemValue="7" />
+                            <f:selectItem itemLabel="4eme" itemValue="8" />
+                            <f:selectItem itemLabel="3eme" itemValue="9" />
+                            <f:selectItem itemLabel="2nde" itemValue="10" />
+                            <f:selectItem itemLabel="1ere" itemValue="11" />
+                            <f:selectItem itemLabel="Terminale" itemValue="12" />
+                        </p:selectOneMenu>  
+                        <br />
+                        <p:commandButton value="Filtrer" action="#{vueProf.addNewProf()}" ajax="false" update="msg"/>
+                        <br /><br />
+                </p:fieldset>
+        </h:form>
+        
  
         <h:form> 
+            <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
             <p:dataScroller value="#{vueCours.listCours}" var="item" chunkSize="10">
                 <f:facet name="header">
-                    Scroll Down to Load More Cars
+                    Les cours proposés par des enseignants
                 </f:facet>
-
                 <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-<!--                    <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> -->
-
+                    <p:graphicImage url="/resources/images/uneProf.jpg" />
                     <p:outputPanel>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Le professeur :" />
@@ -59,6 +82,3 @@
         </h:form>
     </h:body>
 </html>
-
-
-

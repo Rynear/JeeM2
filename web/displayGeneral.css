@@ -14,3 +14,23 @@ and open the template in the editor.
     margin-right: auto;
     width: 80%;
 }
+
+BODY 	{
+            background-color      : #1F90D1;
+		color		  : #000000;
+		margin-left       :0;
+		margin-right      :0;
+		margin-top        :0;
+                margin-bottom     :0; 
+}
+
+footer {
+   margin-left: 20%;
+   margin-right: 20%;
+   left: 0;
+   bottom: 0;
+   width: 60%;
+   background-color: #A91101;
+   color: white;
+   text-align: center;
+}

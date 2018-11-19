@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 
 /**
@@ -24,6 +25,7 @@ public class VueCours implements Serializable {
     @EJB
     CoursFacadeLocal coursDAO;
     private Cours monCours;
+    private List<Cours> listCours;
     private Integer idE;
     private Integer idP;
     private Date dateC;
@@ -84,5 +86,15 @@ public class VueCours implements Serializable {
         this.comC = comC;
     }
     
-    
+    /**
+     * Retourne la liste des héros qui sont dans la base de données_avec primefaces
+     * @return 
+     */    
+    public List<Cours> getListCours() {
+        return coursDAO.findAll();
+    }
+
+    public void setListCours(List<Cours> listCours) {
+        this.listCours = listCours;
+    }
 }

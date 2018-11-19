@@ -9,29 +9,54 @@
         <title>Page d'acceuil</title>
             <img src="C:/JeeM2/JeeM2/src/java/images/coursParticuliers.png" alt="Mon image" /> <!--width="1435" height="500"/>-->
     </h:head>
-
+    
     <h:body>
-<!--        ************************************************************
-        *********** Affichage du menu vers Eleve et Prof ***********
-        ************************************************************-->
+        <style type="text/css">
+            .logo {
+                width: 5%
+            }
 
-        <p:tabMenu activeIndex="#{param.i}"> <!-- Provient de https://www.primefaces.org/showcase/ui/menu/tabMenu.xhtml -->
-            <p:menuitem value="Professeurs" outcome="Prof" icon="pi pi-briefcase">
-                <f:param name="i" value="0" />
-            </p:menuitem>
-            <p:menuitem value="Eleves" outcome="Eleve" icon="pi pi-user">
-                <f:param name="i" value="1" />
-            </p:menuitem>
-            <p:menuitem value="Planning" outcome="Planning" icon="pi pi-file">
-                <f:param name="i" value="1" />
-            </p:menuitem>
-        </p:tabMenu>
-<!--        <p:steps activeIndex="3" styleClass="custom" readonly="false">
-            <p:menuitem value="Le coin des profs" outcome="Prof"/>
-            <p:menuitem value="Le coin des elèves" outcome="Eleve"/>
-            <p:menuitem value="Le planning" url="#"/>
-            <p:menuitem value="Administration" url="#"/>
-    </p:steps>-->
+            .detail {
+                width: 95%;
+                padding-left: 25px;
+            }
+
+            .detail td {
+                font-size: 24px;
+            }
+
+            .ui-datascroller .ui-datascroller-item {
+                border-bottom: 1px solid #A8A8A8;
+                padding: 25px 10px;
+                /* with the exported variables from Nova and Luna Themes*/
+                border-bottom-color: var(--input-border-color, #A8A8A8);
+            }
+        </style>
+ 
+        <h:form> 
+            <p:dataScroller value="#{vueCours.listCours}" var="item" chunkSize="10">
+                <f:facet name="header">
+                    Scroll Down to Load More Cars
+                </f:facet>
+
+                <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+<!--                    <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> -->
+
+                    <p:outputPanel>
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Le professeur :" />
+                            <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+
+                            <h:outputText value="La date proposé par le professeur :" />
+                            <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
+
+                            <h:outputText value="Les détails laissé par le professeur :" />
+                            <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
+                </h:panelGrid>
+            </p:dataScroller>
+        </h:form>
     </h:body>
 </html>
 

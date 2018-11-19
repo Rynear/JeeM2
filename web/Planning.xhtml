@@ -6,8 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
  
     <h:head>
-        <title>Page d'acceuil</title>
-            <img src="C:/JeeM2/JeeM2/src/java/images/coursParticuliers.png" alt="Mon image" /> <!--width="1435" height="500"/>-->
+        <title>Planning</title>
+        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+            <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
     </h:head>
     
     <h:body>
@@ -32,10 +33,9 @@
                 border-bottom-color: var(--input-border-color, #A8A8A8);
             }
         </style>
-        
         <h:form>
             <p:growl id="choixDuNiveau" showDetail="true" />
-                <p:fieldset legend="Effectuer une recherche de cours par classe :" toggleable="true" toggleSpeed="500">
+                <p:fieldset legend="Effectuer une recherche de cours par classe :" toggleable="true" toggleSpeed="500" class="center">
                         <p:selectOneMenu id="console" style="width:125px">
                             <f:selectItem itemLabel="CP" itemValue="1" />
                             <f:selectItem itemLabel="CE1" itemValue="2" />
@@ -56,15 +56,18 @@
                 </p:fieldset>
         </h:form>
         
- 
+        <br/>
+        <br/>
+        <br/>
+        
         <h:form> 
             <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
-            <p:dataScroller value="#{vueCours.listCours}" var="item" chunkSize="10">
+            <p:dataScroller value="#{vueCours.listCours}" var="item" chunkSize="10" class="center">
                 <f:facet name="header">
                     Les cours proposés par des enseignants
                 </f:facet>
                 <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                    <p:graphicImage url="/resources/images/uneProf.jpg" />
+                    <p:graphicImage url="resources/#{item.idP.sexeP}.jpg" />
                     <p:outputPanel>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="Le professeur :" />
@@ -82,3 +85,9 @@
         </h:form>
     </h:body>
 </html>
+
+
+
+
+
+

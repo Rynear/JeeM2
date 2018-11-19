@@ -12,10 +12,6 @@
     </h:head>
 
     <h:body>
-<!--        ************************************************************
-        *********** Affichage du menu vers Eleve et Prof ***********
-        ************************************************************-->
-
         <p:tabMenu activeIndex="#{param.i}" class="center"> <!-- Provient de https://www.primefaces.org/showcase/ui/menu/tabMenu.xhtml -->
             <p:menuitem value="Professeurs" outcome="Prof" icon="pi pi-briefcase">
                 <f:param name="i" value="0" />
@@ -27,16 +23,11 @@
                 <f:param name="i" value="1" />
             </p:menuitem>
         </p:tabMenu>
-<!--        <p:steps activeIndex="3" styleClass="custom" readonly="false">
-            <p:menuitem value="Le coin des profs" outcome="Prof"/>
-            <p:menuitem value="Le coin des elèves" outcome="Eleve"/>
-            <p:menuitem value="Le planning" url="#"/>
-            <p:menuitem value="Administration" url="#"/>
-    </p:steps>-->
     </h:body>
-    
-    
-<style type="text/css">
+</html>
+
+
+<!--<style type="text/css">
 .ui-steps .ui-steps-item {
     width: 25%;
 }
@@ -67,11 +58,4 @@
 .ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
     color: #555;
 }
-</style>
-
-    
-    
-</html>
-
-
-
+</style>-->

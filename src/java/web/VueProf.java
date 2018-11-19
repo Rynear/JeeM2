@@ -8,11 +8,14 @@ package web;
 import dao.ProfFacade;
 import dao.ProfFacadeLocal;
 import entity.Prof;
+import entity.Prof_;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -28,6 +31,7 @@ public class VueProf implements Serializable {
     private Prof monProf;
     private Prof monNouveauProf;
     private Prof monAncienProf;
+    private Integer IdP;
     private String nomP;
     private String prenomP;
     private String mdpP;
@@ -57,6 +61,13 @@ public class VueProf implements Serializable {
         this.monProf = monProf;
     }
 
+    public Integer getIdP() {
+        return IdP;
+    }
+
+    public void setIdP(Integer IdP) {
+        this.IdP = IdP;
+    }
     public Prof getMonNouveauProf() {
         return monNouveauProf;
     }
@@ -121,4 +132,13 @@ public class VueProf implements Serializable {
     return profDAO.findAll();
     }
 
+    public void editProf(){
+      monAncienProf = profDAO.find(IdP);
+      monAncienProf.setNomP(monNouveauProf.getNomP());
+      monAncienProf.setNiveauMaxP(monNouveauProf.getNiveauMaxP());
+      profDAO.edit(monAncienProf);
+      FacesContext context = FacesContext.getCurrentInstance();
+      context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
+  }
+        
 }

@@ -139,6 +139,6 @@ public class VueProf implements Serializable {
       profDAO.edit(monAncienProf);
       FacesContext context = FacesContext.getCurrentInstance();
       context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
-  }
-        
+    }
+    
 }

@@ -34,3 +34,8 @@ footer {
    color: white;
    text-align: center;
 }
+
+fieldset{
+   margin-left: 10%;
+   margin-right: 10%;
+}

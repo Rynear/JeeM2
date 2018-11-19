@@ -7,10 +7,14 @@ package web;
 
 import dao.EleveFacadeLocal;
 import entity.Eleve;
+import entity.Prof;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -25,6 +29,7 @@ public class VueEleve implements Serializable {
     private Eleve monEleve;
     private Eleve monNouveauEleve;
     private Eleve monAncienEleve;
+    private Integer IdE;
     private String nomE;
     private String prenomE;
     private String mdpE;
@@ -70,7 +75,15 @@ public class VueEleve implements Serializable {
     public void setMonAncienEleve(Eleve monAncienEleve) {
         this.monAncienEleve = monAncienEleve;
     }
+    
+    public Integer getIdE() {
+        return IdE;
+    }
 
+    public void setIdE(Integer IdE) {
+        this.IdE = IdE;
+    }
+    
     public String getNomE() {
         return nomE;
     }
@@ -115,4 +128,16 @@ public class VueEleve implements Serializable {
         eleveDAO.create(monNouveauEleve);
     }
     
+    public List<Eleve> getListeEleve() {
+    return eleveDAO.findAll();
+    }
+
+    public void editEleve(){
+      monAncienEleve = eleveDAO.find(IdE);
+      monAncienEleve.setAgeE(monNouveauEleve.getAgeE());
+      monAncienEleve.setNiveauE(monNouveauEleve.getNiveauE());
+      eleveDAO.edit(monAncienEleve);
+      FacesContext context = FacesContext.getCurrentInstance();
+      context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
+    }
 }

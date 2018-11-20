@@ -58,10 +58,39 @@
             </h:panelGrid>
         </p:fieldset>
         
-        <p:fieldset collapsed="true" legend="Tu es inscris et tu recherches un cours:" toggleable="true" toggleSpeed="500">
-        </p:fieldset>
+        <p:fieldset collapsed="true" legend="Vous souhaitez proposer un cours:" toggleable="true" toggleSpeed="500">
+            <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+            <h:form id="AddNewCours">
+                
+                <p:selectOneMenu id="nom" value="#{vueCours.newIdProf}" style="width:150px">
+                    <f:selectItem itemLabel="Select Nom" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{vueProf.listeProf}" var="n" itemLabel="#{n.nomP}" itemValue="#{n.idP}" />
+                </p:selectOneMenu> 
+                
+                <p:outputLabel for="datetime" value="Choisissez la date et l'heure du cours: " />
+                <p:calendar id="datetime" value="#{vueCours.monNouveauCours.dateHeureC}" pattern="MM/dd/yyyy HH:mm:ss" />
+                <br />
+                
+                <p:outputLabel value="Commentaire (optionnel) :" />
+                <p:inputText value="#{vueCours.monNouveauCours.commentaireC}"/>
+                <br />
+                
+                <p:commandButton value="J'y vais" action="#{vueCours.addNewCours()}" ajax="false" update="msg"/>                
+                <br />
+                
+                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                        <h:outputText value="Vous venez de planifier votre disponibilité pour ce créneau: " />
+                        <h:outputText value="#{vueCours.monNouveauCours.dateHeureC}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                </p:dialog>
+                
+                </h:form>
+            </p:fieldset>
         
-        <p:fieldset collapsed="true" legend="Ci dessous la liste des profs" toggleable="true" toggleSpeed="500">
+        <p:fieldset collapsed="true" legend="Liste de vos collègues" toggleable="true" toggleSpeed="500">
                 <h:form id="ListeProf">
                     <p:dataTable var="item" value="#{vueProf.listeProf}">
                     <p:column headerText="Nom">

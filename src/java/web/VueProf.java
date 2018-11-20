@@ -5,10 +5,9 @@
  */
 package web;
 
-import dao.ProfFacade;
 import dao.ProfFacadeLocal;
+import entity.Cours;
 import entity.Prof;
-import entity.Prof_;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -37,6 +36,7 @@ public class VueProf implements Serializable {
     private String mdpP;
     private Integer sexeP;
     private Integer niveauMaxP;
+    private Cours Cours1;
     
     /**
      * Creates a new instance of VueProf
@@ -140,5 +140,6 @@ public class VueProf implements Serializable {
       FacesContext context = FacesContext.getCurrentInstance();
       context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
     }
+    
     
 }

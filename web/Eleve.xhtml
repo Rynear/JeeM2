@@ -61,6 +61,21 @@
         </p:fieldset>
         
         <p:fieldset legend="Tu es inscris et tu recherches un cours:" toggleable="true" toggleSpeed="500">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputText value="Votre nom :" />
+                <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+
+                <h:outputText value="Votre prenom :" />
+                <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
+
+                <h:outputText value="Votre mot de passe :" />
+                <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
+
+                <p:link outcome="ReserverCours" value="Réserver ce cours">
+                    <f:param name="recordIdCours" value="#{vueCours.setRecordIdCours(item.idC)}" />
+                </p:link>
+
+            </h:panelGrid>
         </p:fieldset>
         
         <p:fieldset legend="Tu souhaites modifier ton profil" toggleable="true" toggleSpeed="500">

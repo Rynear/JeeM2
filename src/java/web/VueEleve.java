@@ -41,6 +41,7 @@ public class VueEleve implements Serializable {
      * Creates a new instance of vueEleve
      */
     public VueEleve() {
+        monEleve = new Eleve();
         monNouveauEleve = new Eleve();
     }
 
@@ -140,4 +141,26 @@ public class VueEleve implements Serializable {
       FacesContext context = FacesContext.getCurrentInstance();
       context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
     }
+    public String login() {
+        Eleve eleve = eleveDAO.find(monEleve.getMdpE());
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        if (eleve == null) {
+            context.addMessage(null, new FacesMessage("Login inconnu, veuillez réessayer"));
+            monEleve.setNomE("");
+            monEleve.setPrenomE("");
+            monEleve.setMdpE("");
+            return null;
+        } else {
+            if (eleve.getMdpE().equals(monEleve.getMdpE())){
+                context.getExternalContext().getSessionMap().put("Eleve ", eleve);
+                return "index?faces-redirect=true";
+            }
+            else{
+                context.addMessage(null, new FacesMessage("Mot de passe invalide, veuillez réessayer"));
+                return null;
+            }
+        }
+    }
+    
 }

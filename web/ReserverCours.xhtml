@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Réservation du cours</title>
+        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+            <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
+    </h:head>
+    <h:body>
+        <!--LE PUTAIN DE COURS = "#{vueCours.recordIdCours}"-->
+        <h:form>
+            <p:fieldset legend="Veuillez vous identifier avant de vous inscrire à ce cours :" toggleable="true" toggleSpeed="500">
+                <p:outputLabel value="Votre nom :" />
+                <p:inputText value="#{vueEleve.monEleve.nomE}"/>
+
+                <p:outputLabel value="Votre prénom :" />
+                <p:inputText value="#{vueEleve.monEleve.prenomE}"/>
+
+                <p:outputLabel value="Definissez votre mot de passe :" />
+                <p:inputText value="#{vueEleve.monEleve.mdpE}"/>
+
+                <br />
+                <p:commandButton value="Vérifier ma connexion" action="#{vueEleve.login()}" ajax="false" update="msg"/>
+                <br /><br />
+            </p:fieldset>
+        </h:form>
+    </h:body>
+</html>

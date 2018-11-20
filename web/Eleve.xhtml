@@ -13,7 +13,7 @@
     <h:body>
         
         <p:growl id="msgs" showDetail="true" />
-        <p:fieldset legend="Vous êtes nouveau ici, inscrivez-vous :" toggleable="true" toggleSpeed="500">
+        <p:fieldset collapsed="true" legend="Vous êtes nouveau ici, inscrivez-vous :" toggleable="true" toggleSpeed="500">
             <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
             <h:panelGrid columns="2" cellpadding="5">
             <h:form id="AddNewEleve">
@@ -60,10 +60,10 @@
             </h:panelGrid>
         </p:fieldset>
         
-        <p:fieldset legend="Tu es inscris et tu recherches un cours:" toggleable="true" toggleSpeed="500">
+        <p:fieldset collapsed="true" legend="Tu es inscris et tu recherches un cours:" toggleable="true" toggleSpeed="500">
             <h:panelGrid columns="2" cellpadding="5">
                 <h:outputText value="Votre nom :" />
-                <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+                <h:outputText value="#{item.idP.prenomP} #{item.idP.nomP}" style="font-weight: bold"/>
 
                 <h:outputText value="Votre prenom :" />
                 <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
@@ -78,7 +78,7 @@
             </h:panelGrid>
         </p:fieldset>
         
-        <p:fieldset legend="Tu souhaites modifier ton profil" toggleable="true" toggleSpeed="500">
+        <p:fieldset collapsed="true" legend="Tu souhaites modifier ton profil" toggleable="true" toggleSpeed="500">
             <h:form>
                 <p:outputLabel value="Choisis ton nom dans la liste :" /> <br /><br />
                 <p:outputLabel for="nom" value="Nom : " />

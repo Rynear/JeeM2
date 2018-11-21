@@ -218,7 +218,6 @@ public class VueEleve implements Serializable {
                      return "index.xhtml?faces-redirect=true";
                  }
             }
-        context.addMessage(null, new FacesMessage("id cours" + recordIdCours));
         context.addMessage(null, new FacesMessage("Mot de passe ou login invalide, veuillez réessayer"));    
         return null;
         }

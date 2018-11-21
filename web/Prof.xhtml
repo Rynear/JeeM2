@@ -22,22 +22,22 @@
                     <h:panelGrid columns="2" cellpadding="5">
 
                         <p:outputLabel value="Votre nom :" />
-                        <p:inputText value="#{VueProf.monNouveauProf.nomP}"/>
+                        <p:inputText value="#{vueProf.monNouveauProf.nomP}"/>
 
                         <p:outputLabel value="Votre prénom :" />
-                        <p:inputText value="#{VueProf.monNouveauProf.prenomP}"/>
+                        <p:inputText value="#{vueProf.monNouveauProf.prenomP}"/>
 
                         <p:outputLabel value="Votre mot de passe :" />
-                        <p:inputText value="#{VueProf.monNouveauProf.mdpP}"/>
+                        <p:inputText value="#{vueProf.monNouveauProf.mdpP}"/>
 
                         <p:outputLabel value="Vous êtes :" />
-                        <p:selectOneButton value="#{VueProf.monNouveauProf.sexeP}">
+                        <p:selectOneButton value="#{vueProf.monNouveauProf.sexeP}">
                             <f:selectItem itemLabel="Un garçon" itemValue="1" />
                             <f:selectItem itemLabel="Une fille" itemValue="2" />
                         </p:selectOneButton>
 
                         <p:outputLabel value="Jusqu'à quel niveau scholaire pouvez vous enseigner ?" />
-                        <p:selectOneMenu id="console" value="#{VueProf.monNouveauProf.niveauMaxP}" style="width:125px">
+                        <p:selectOneMenu id="console" value="#{vueProf.monNouveauProf.niveauMaxP}" style="width:125px">
                             <f:selectItem itemLabel="CP" itemValue="1" />
                             <f:selectItem itemLabel="CE1" itemValue="2" />
                             <f:selectItem itemLabel="CE2" itemValue="3" />
@@ -54,7 +54,7 @@
 
                     </h:panelGrid>
                     <br />
-                    <p:commandButton value="M'enregistrer" action="#{VueProf.addNewProf()}" ajax="false" update="msg"/>
+                    <p:commandButton value="M'enregistrer" action="#{vueProf.addNewProf()}" ajax="false" update="msg"/>
                     <br /><br />
                 </h:form>
             </h:panelGrid>

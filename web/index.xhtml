@@ -4,13 +4,13 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
- 
+
     <h:head>
         <title>Page d'acceuil</title>
-        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+            <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
             <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
     </h:head>
-    
+
     <h:body>
         <p:tabMenu activeIndex="#{param.i}" class="center"> <!-- Provient de https://www.primefaces.org/showcase/ui/menu/tabMenu.xhtml -->
             <p:menuitem value="Professeurs" outcome="Prof" icon="pi pi-briefcase">
@@ -23,20 +23,20 @@
                 <f:param name="i" value="2" />
             </p:menuitem>
         </p:tabMenu>
-        
-    <footer>
-      <p>
-          Qui sommes-nous ?
-          <br />
-          Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
-          <br />
-          Rechercher un cours ou un professeur disponible devient plus facile.
-      </p>
-    </footer>
-        
-        
+
+        <footer>
+            <p>
+                Qui sommes-nous ?
+                <br />
+                Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
+                <br />
+                Rechercher un cours ou un professeur disponible devient plus facile.
+            </p>
+        </footer>
+
+
     </h:body>
-   
+
 </html>
 
 

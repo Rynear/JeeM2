@@ -43,7 +43,6 @@ public class VueCours implements Serializable {
     private Cours monNouveauCours;
     private Integer newIdProf;
 
-
     /**
      * Creates a new instance of VueCours
      */
@@ -107,7 +106,7 @@ public class VueCours implements Serializable {
     public void setRecordIdCours(Integer recordIdCours) {
         this.recordIdCours = recordIdCours;
     }
-    
+
     public Integer getNewIdProf() {
         return newIdProf;
     }
@@ -115,11 +114,13 @@ public class VueCours implements Serializable {
     public void setNewIdProf(Integer newIdProf) {
         this.newIdProf = newIdProf;
     }
-    
+
     /**
-     * Retourne la liste des héros qui sont dans la base de données_avec primefaces
-     * @return 
-     */    
+     * Retourne la liste des héros qui sont dans la base de données_avec
+     * primefaces
+     *
+     * @return
+     */
     public List<Cours> getListCours() {
         return coursDAO.findAll();
     }
@@ -127,7 +128,7 @@ public class VueCours implements Serializable {
     public void setListCours(List<Cours> listCours) {
         this.listCours = listCours;
     }
-    
+
     public Cours getMonNouveauCours() {
         return monNouveauCours;
     }
@@ -135,24 +136,23 @@ public class VueCours implements Serializable {
     public void setMonNouveauCours(Cours monNouveauCours) {
         this.monNouveauCours = monNouveauCours;
     }
-    
-    public void addNewCours(){
+
+    public void addNewCours() {
         Prof pf = profDAO.find(newIdProf);
         monNouveauCours.setIdP(pf);
         coursDAO.create(monNouveauCours);
         monNouveauCours = new Cours();
     }
-        
+
     public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
-     
+
     public void click() {
         PrimeFaces.current().ajax().update("form:display");
         PrimeFaces.current().executeScript("PF('dlg').show()");
     }
-   
-    
+
 }

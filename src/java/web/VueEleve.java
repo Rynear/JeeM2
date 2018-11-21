@@ -35,8 +35,7 @@ public class VueEleve implements Serializable {
     private String mdpE;
     private Integer sexeE;
     private Integer niveauE;
-    
-            
+
     /**
      * Creates a new instance of vueEleve
      */
@@ -76,7 +75,7 @@ public class VueEleve implements Serializable {
     public void setMonAncienEleve(Eleve monAncienEleve) {
         this.monAncienEleve = monAncienEleve;
     }
-    
+
     public Integer getIdE() {
         return IdE;
     }
@@ -84,7 +83,7 @@ public class VueEleve implements Serializable {
     public void setIdE(Integer IdE) {
         this.IdE = IdE;
     }
-    
+
     public String getNomE() {
         return nomE;
     }
@@ -124,23 +123,24 @@ public class VueEleve implements Serializable {
     public void setNiveauE(Integer niveauE) {
         this.niveauE = niveauE;
     }
-    
+
     public void addNewEleve() {
         eleveDAO.create(monNouveauEleve);
     }
-    
+
     public List<Eleve> getListeEleve() {
-    return eleveDAO.findAll();
+        return eleveDAO.findAll();
     }
 
-    public void editEleve(){
-      monAncienEleve = eleveDAO.find(IdE);
-      monAncienEleve.setAgeE(monNouveauEleve.getAgeE());
-      monAncienEleve.setNiveauE(monNouveauEleve.getNiveauE());
-      eleveDAO.edit(monAncienEleve);
-      FacesContext context = FacesContext.getCurrentInstance();
-      context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
+    public void editEleve() {
+        monAncienEleve = eleveDAO.find(IdE);
+        monAncienEleve.setAgeE(monNouveauEleve.getAgeE());
+        monAncienEleve.setNiveauE(monNouveauEleve.getNiveauE());
+        eleveDAO.edit(monAncienEleve);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
     }
+
     public String login() {
         Eleve eleve = eleveDAO.find(monEleve.getMdpE());
         FacesContext context = FacesContext.getCurrentInstance();
@@ -152,15 +152,14 @@ public class VueEleve implements Serializable {
             monEleve.setMdpE("");
             return null;
         } else {
-            if (eleve.getMdpE().equals(monEleve.getMdpE())){
+            if (eleve.getMdpE().equals(monEleve.getMdpE())) {
                 context.getExternalContext().getSessionMap().put("Eleve ", eleve);
                 return "index?faces-redirect=true";
-            }
-            else{
+            } else {
                 context.addMessage(null, new FacesMessage("Mot de passe invalide, veuillez réessayer"));
                 return null;
             }
         }
     }
-    
+
 }

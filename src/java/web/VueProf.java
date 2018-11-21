@@ -24,7 +24,6 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class VueProf implements Serializable {
 
-    
     @EJB
     ProfFacadeLocal profDAO;
     private Prof monProf;
@@ -37,7 +36,7 @@ public class VueProf implements Serializable {
     private Integer sexeP;
     private Integer niveauMaxP;
     private Cours Cours1;
-    
+
     /**
      * Creates a new instance of VueProf
      */
@@ -68,6 +67,7 @@ public class VueProf implements Serializable {
     public void setIdP(Integer IdP) {
         this.IdP = IdP;
     }
+
     public Prof getMonNouveauProf() {
         return monNouveauProf;
     }
@@ -123,23 +123,22 @@ public class VueProf implements Serializable {
     public void setNiveauMaxP(Integer niveauMaxP) {
         this.niveauMaxP = niveauMaxP;
     }
-    
-    public void addNewProf(){
+
+    public void addNewProf() {
         profDAO.create(monNouveauProf);
     }
-    
+
     public List<Prof> getListeProf() {
-    return profDAO.findAll();
+        return profDAO.findAll();
     }
 
-    public void editProf(){
-      monAncienProf = profDAO.find(IdP);
-      monAncienProf.setNomP(monNouveauProf.getNomP());
-      monAncienProf.setNiveauMaxP(monNouveauProf.getNiveauMaxP());
-      profDAO.edit(monAncienProf);
-      FacesContext context = FacesContext.getCurrentInstance();
-      context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
+    public void editProf() {
+        monAncienProf = profDAO.find(IdP);
+        monAncienProf.setNomP(monNouveauProf.getNomP());
+        monAncienProf.setNiveauMaxP(monNouveauProf.getNiveauMaxP());
+        profDAO.edit(monAncienProf);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
     }
-    
-    
+
 }

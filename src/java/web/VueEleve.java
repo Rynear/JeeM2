@@ -188,6 +188,15 @@ public class VueEleve implements Serializable {
         this.numCours = numCours;
     }
     
+    public void editEleve() {
+        monAncienEleve = eleveDAO.find(IdE);
+        monAncienEleve.setAgeE(monNouveauEleve.getAgeE());
+        monAncienEleve.setNiveauE(monNouveauEleve.getNiveauE());
+        eleveDAO.edit(monAncienEleve);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
+    }
+    
     public String redirectionAndRecordNum(Integer cours){
         setNumCours(cours);
         return "ReserverCours.xhtml?faces-redirect=true";

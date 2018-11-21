@@ -13,6 +13,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -35,6 +36,8 @@ public class VueCours implements Serializable {
     ProfFacadeLocal profDAO;
     private Cours monCours;
     private List<Cours> listCours;
+    private List<Cours> listCoursSansEleve;
+    private List<Cours> listCoursFinal;
     private Integer idC;
     private Integer idE;
     private Integer idP;
@@ -158,4 +161,34 @@ public class VueCours implements Serializable {
         PrimeFaces.current().executeScript("PF('dlg').show()");
     }
 
+    public ProfFacadeLocal getProfDAO() {
+        return profDAO;
+    }
+
+    public void setProfDAO(ProfFacadeLocal profDAO) {
+        this.profDAO = profDAO;
+    }
+
+    public List<Cours> getListCoursSansEleve() {
+        listCoursSansEleve = coursDAO.findAll();
+        List<Cours> listCoursFinal = new ArrayList<>();
+        for (int i = 0; i < listCoursSansEleve.size(); i++){
+            if (listCoursSansEleve.get(i).getIdE() == null){
+                listCoursFinal.add(listCoursSansEleve.get(i));
+            }
+        }
+        return listCoursFinal;
+    }
+
+    public void setListCoursSansEleve(List<Cours> listCoursSansEleve) {
+        this.listCoursSansEleve = listCoursSansEleve;
+    }
+
+    public Integer getRecordIdCours() {
+        return recordIdCours;
+    }
+
+    public void setRecordIdCours(Integer recordIdCours) {
+        this.recordIdCours = recordIdCours;
+    }
 }

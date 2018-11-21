@@ -4,13 +4,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
- 
+
     <h:head>
         <title>Planning</title>
-        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+        <a href="index.xhtml">
+            <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
             <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
+        </a>
     </h:head>
-    
+
     <h:body>
         <style type="text/css">
             .logo {
@@ -35,15 +37,15 @@
         </style>
         <h:form>
             <p:growl id="choixDuNiveau" showDetail="true" />
-                <p:fieldset legend="Proposer un cours :" toggleable="true" toggleSpeed="500" class="center">
-                    
-                </p:fieldset>
+            <p:fieldset collapsed="true" legend="Proposer un cours :" toggleable="true" toggleSpeed="500" class="center">
+
+            </p:fieldset>
         </h:form>
-        
+
         <br/>
         <br/>
         <br/>
-        
+
         <h:form> 
             <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
             <p:dataScroller value="#{vueCours.listCours}" var="item" chunkSize="10" class="center">
@@ -70,21 +72,21 @@
                 </h:panelGrid>
             </p:dataScroller>
         </h:form>
-        
-        
-    <footer>
-      <p>
-          Qui sommes-nous ?
-          <br />
-          Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
-          <br />
-          Rechercher un cours ou un professeur disponible devient plus facile.
-      </p>
-    </footer>
-    
-        
+
+
+        <footer>
+            <p>
+                Qui sommes-nous ?
+                <br />
+                Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
+                <br />
+                Rechercher un cours ou un professeur disponible devient plus facile.
+            </p>
+        </footer>
+
+
     </h:body>
-    
+
 </html>
 
 

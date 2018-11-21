@@ -9,6 +9,7 @@ import dao.CoursFacadeLocal;
 import dao.EleveFacadeLocal;
 import entity.Cours;
 import entity.Eleve;
+import entity.Prof;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -36,6 +37,7 @@ public class VueEleve implements Serializable {
     private Eleve monEleve;
     private Eleve monNouveauEleve;
     private Eleve monAncienEleve;
+    private Integer IdE;
     private String nomE;
     private String prenomE;
     private String mdpE;
@@ -86,6 +88,14 @@ public class VueEleve implements Serializable {
         this.monAncienEleve = monAncienEleve;
     }
 
+    public Integer getIdE() {
+        return IdE;
+    }
+
+    public void setIdE(Integer IdE) {
+        this.IdE = IdE;
+    }
+
     public String getNomE() {
         return nomE;
     }
@@ -126,6 +136,10 @@ public class VueEleve implements Serializable {
         this.niveauE = niveauE;
     }
 
+    public void addNewEleve() {
+        eleveDAO.create(monNouveauEleve);
+    }
+
     public CoursFacadeLocal getCoursDAO() {
         return coursDAO;
     }
@@ -150,6 +164,14 @@ public class VueEleve implements Serializable {
         this.monNouveauCours = monNouveauCours;
     }
 
+    public List<Eleve> getListEleve() {
+        return listEleve;
+    }
+
+    public void setListEleve(List<Eleve> listEleve) {
+        this.listEleve = listEleve;
+    }
+
     public String getRecordIdCours() {
         return recordIdCours;
     }
@@ -164,18 +186,6 @@ public class VueEleve implements Serializable {
 
     public void setNumCours(Integer numCours) {
         this.numCours = numCours;
-    }
- 
-    public List<Eleve> getListEleve() {
-        return eleveDAO.findAll();
-    }
-
-    public void setListEleve(List<Eleve> listEleve) {
-        this.listEleve = listEleve;
-    }
-    
-    public void addNewEleve() {
-        eleveDAO.create(monNouveauEleve);
     }
     
     public String redirectionAndRecordNum(Integer cours){
@@ -198,7 +208,6 @@ public class VueEleve implements Serializable {
                      monAncienCours = coursDAO.find(numCours);
                      monAncienCours.setIdE(eleve);
                      coursDAO.edit(monAncienCours);
-                     setRecordIdCours(null);
                      return "index.xhtml?faces-redirect=true";
                  }
             }

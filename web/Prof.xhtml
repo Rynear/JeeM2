@@ -4,133 +4,164 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <h:head>
         <title>Page professeur</title>
-        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+        <a href="index.xhtml">
+            <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
             <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
+        </a>
     </h:head>
-    
+
     <h:body>
         <p:growl id="msgs" showDetail="true" />
-        <p:fieldset legend="Vous êtes nouveau ici, inscrivez-vous :" toggleable="true" toggleSpeed="500">
+        <p:fieldset collapsed="true" legend="Vous êtes nouveau ici, inscrivez-vous :" toggleable="true" toggleSpeed="500">
             <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
             <h:panelGrid columns="2" cellpadding="5">
-            <h:form id="AddNewProf">
-                <h:panelGrid columns="2" cellpadding="5">
-                    
-                <p:outputLabel value="Votre nom :" />
-                <p:inputText value="#{vueProf.monNouveauProf.nomP}"/>
-                
-                <p:outputLabel value="Votre prénom :" />
-                <p:inputText value="#{vueProf.monNouveauProf.prenomP}"/>
-                
-                <p:outputLabel value="Votre mot de passe :" />
-                <p:inputText value="#{vueProf.monNouveauProf.mdpP}"/>
-                
-                <p:outputLabel value="Vous êtes :" />
-                <p:selectOneButton value="#{vueProf.monNouveauProf.sexeP}">
-                    <f:selectItem itemLabel="Un garçon" itemValue="1" />
-                    <f:selectItem itemLabel="Une fille" itemValue="2" />
-                </p:selectOneButton>
+                <h:form id="AddNewProf">
+                    <h:panelGrid columns="2" cellpadding="5">
 
-                <p:outputLabel value="Jusqu'à quel niveau scholaire pouvez vous enseigner ?" />
-                <p:selectOneMenu id="console" value="#{vueProf.monNouveauProf.niveauMaxP}" style="width:125px">
-                    <f:selectItem itemLabel="CP" itemValue="1" />
-                    <f:selectItem itemLabel="CE1" itemValue="2" />
-                    <f:selectItem itemLabel="CE2" itemValue="3" />
-                    <f:selectItem itemLabel="CM1" itemValue="4" />
-                    <f:selectItem itemLabel="CM2" itemValue="5" />
-                    <f:selectItem itemLabel="6eme" itemValue="6" />
-                    <f:selectItem itemLabel="5eme" itemValue="7" />
-                    <f:selectItem itemLabel="4eme" itemValue="8" />
-                    <f:selectItem itemLabel="3eme" itemValue="9" />
-                    <f:selectItem itemLabel="2nde" itemValue="10" />
-                    <f:selectItem itemLabel="1ere" itemValue="11" />
-                    <f:selectItem itemLabel="Terminale" itemValue="12" />
-                </p:selectOneMenu>  
+                        <p:outputLabel value="Votre nom :" />
+                        <p:inputText value="#{VueProf.monNouveauProf.nomP}"/>
 
-                </h:panelGrid>
-                <br />
-                <p:commandButton value="M'enregistrer" action="#{vueProf.addNewProf()}" ajax="false" update="msg"/>
-                <br /><br />
-            </h:form>
+                        <p:outputLabel value="Votre prénom :" />
+                        <p:inputText value="#{VueProf.monNouveauProf.prenomP}"/>
+
+                        <p:outputLabel value="Votre mot de passe :" />
+                        <p:inputText value="#{VueProf.monNouveauProf.mdpP}"/>
+
+                        <p:outputLabel value="Vous êtes :" />
+                        <p:selectOneButton value="#{VueProf.monNouveauProf.sexeP}">
+                            <f:selectItem itemLabel="Un garçon" itemValue="1" />
+                            <f:selectItem itemLabel="Une fille" itemValue="2" />
+                        </p:selectOneButton>
+
+                        <p:outputLabel value="Jusqu'à quel niveau scholaire pouvez vous enseigner ?" />
+                        <p:selectOneMenu id="console" value="#{VueProf.monNouveauProf.niveauMaxP}" style="width:125px">
+                            <f:selectItem itemLabel="CP" itemValue="1" />
+                            <f:selectItem itemLabel="CE1" itemValue="2" />
+                            <f:selectItem itemLabel="CE2" itemValue="3" />
+                            <f:selectItem itemLabel="CM1" itemValue="4" />
+                            <f:selectItem itemLabel="CM2" itemValue="5" />
+                            <f:selectItem itemLabel="6eme" itemValue="6" />
+                            <f:selectItem itemLabel="5eme" itemValue="7" />
+                            <f:selectItem itemLabel="4eme" itemValue="8" />
+                            <f:selectItem itemLabel="3eme" itemValue="9" />
+                            <f:selectItem itemLabel="2nde" itemValue="10" />
+                            <f:selectItem itemLabel="1ere" itemValue="11" />
+                            <f:selectItem itemLabel="Terminale" itemValue="12" />
+                        </p:selectOneMenu>  
+
+                    </h:panelGrid>
+                    <br />
+                    <p:commandButton value="M'enregistrer" action="#{VueProf.addNewProf()}" ajax="false" update="msg"/>
+                    <br /><br />
+                </h:form>
             </h:panelGrid>
         </p:fieldset>
-        
-        <p:fieldset legend="Tu es inscris et tu recherches un cours:" toggleable="true" toggleSpeed="500">
+
+        <p:fieldset collapsed="true" legend="Vous souhaitez proposer un cours:" toggleable="true" toggleSpeed="500">
+            <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+            <h:form id="AddNewCours">
+
+                <p:selectOneMenu id="nom" value="#{vueCours.newIdProf}" style="width:150px">
+                    <f:selectItem itemLabel="Select Nom" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{vueProf.listeProf}" var="n" itemLabel="#{n.nomP}" itemValue="#{n.idP}" />
+                </p:selectOneMenu> 
+
+                <p:outputLabel for="datetime" value="Choisissez la date et l'heure du cours: " />
+                <p:calendar id="datetime" value="#{vueCours.monNouveauCours.dateHeureC}" pattern="MM/dd/yyyy HH:mm:ss" />
+                <br />
+
+                <p:outputLabel value="Commentaire (optionnel) :" />
+                <p:inputText value="#{vueCours.monNouveauCours.commentaireC}"/>
+                <br />
+
+                <p:commandButton value="J'y vais" action="#{vueCours.addNewCours()}" ajax="false" update="msg"/>                
+                <br />
+
+                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                        <h:outputText value="Vous venez de planifier votre disponibilité pour ce créneau: " />
+                        <h:outputText value="#{vueCours.monNouveauCours.dateHeureC}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                </p:dialog>
+
+            </h:form>
         </p:fieldset>
-        
-        <p:fieldset legend="Ci dessous la liste des profs" toggleable="true" toggleSpeed="500">
-                <h:form id="ListeProf">
-                    <p:dataTable var="item" value="#{vueProf.listeProf}">
+
+        <p:fieldset collapsed="true" legend="Liste de vos collègues" toggleable="true" toggleSpeed="500">
+            <h:form id="ListeProf">
+                <p:dataTable var="item" value="#{vueProf.listeProf}">
                     <p:column headerText="Nom">
                         <h:outputText value="#{item.nomP}"/>
                     </p:column>
-        
+
                     <p:column headerText="Age">
                         <h:outputText value="#{item.prenomP}"/>
                     </p:column>
-                        
+
                     <p:column headerText="Sexe">
                         <h:outputText value="#{item.sexeP}"/>
                     </p:column>
-                
+
                     <p:column headerText="Niveau max enseigné">
                         <h:outputText value="#{item.niveauMaxP}"/>
                     </p:column>
-                        
-                  </p:dataTable>    
-                </h:form>
-        </p:fieldset>
-        
-        <p:fieldset legend="Mofidier un profil de professeur" toggleable="true" toggleSpeed="500">
-        <h:form>
-            <p:outputLabel value="Anciennes informations :" /> <br /><br />
-            <p:outputLabel for="nom" value="Nom : " />
-            <p:selectOneMenu id="nom" value="#{vueProf.idP}" style="width:150px">
-                <f:selectItem itemLabel="Select Nom" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{vueProf.listeProf}" var="n" itemLabel="#{n.nomP}" itemValue="#{n.idP}" />
-            </p:selectOneMenu>   
-            <br /><br />
-            <p:outputLabel value="Nouvelles infos :" /> <br /><br /> 
-            <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel value="Nom : " />
-            <p:inputText value="#{vueProf.monNouveauProf.nomP}"/> 
-            <p:outputLabel value="Niveau enseigné : " />
 
-            <p:outputLabel value="Jusqu'à quel niveau scholaire pouvez vous enseigner ?" />
-                <p:selectOneMenu id="console" value="#{vueProf.monNouveauProf.niveauMaxP}" style="width:125px">
-                    <f:selectItem itemLabel="CP" itemValue="1" />
-                    <f:selectItem itemLabel="CE1" itemValue="2" />
-                    <f:selectItem itemLabel="CE2" itemValue="3" />
-                    <f:selectItem itemLabel="CM1" itemValue="4" />
-                    <f:selectItem itemLabel="CM2" itemValue="5" />
-                    <f:selectItem itemLabel="6eme" itemValue="6" />
-                    <f:selectItem itemLabel="5eme" itemValue="7" />
-                    <f:selectItem itemLabel="4eme" itemValue="8" />
-                    <f:selectItem itemLabel="3eme" itemValue="9" />
-                    <f:selectItem itemLabel="2nde" itemValue="10" />
-                    <f:selectItem itemLabel="1ere" itemValue="11" />
-                    <f:selectItem itemLabel="Terminale" itemValue="12" />
-                </p:selectOneMenu>
-
-            </h:panelGrid>
-            <br />
-            <p:commandButton value="Modifier" action="#{vueProf.editProf()}" ajax="false"/> 
-            <br /><br />
-        </h:form>
+                </p:dataTable>    
+            </h:form>
         </p:fieldset>
-    <footer>
-      <p>
-          Qui sommes-nous ?
-          <br />
-          Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
-          <br />
-          Rechercher un cours ou un professeur disponible devient plus facile.
-      </p>
-    </footer>     
+
+        <p:fieldset collapsed="true" legend="Mofidier un profil de professeur" toggleable="true" toggleSpeed="500">
+            <h:form>
+                <p:outputLabel value="Anciennes informations :" /> <br /><br />
+                <p:outputLabel for="nom" value="Nom : " />
+                <p:selectOneMenu id="nom" value="#{vueProf.idP}" style="width:150px">
+                    <f:selectItem itemLabel="Select Nom" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{vueProf.listeProf}" var="n" itemLabel="#{n.nomP}" itemValue="#{n.idP}" />
+                </p:selectOneMenu>   
+                <br /><br />
+                <p:outputLabel value="Nouvelles infos :" /> <br /><br /> 
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Nom : " />
+                    <p:inputText value="#{vueProf.monNouveauProf.nomP}"/> 
+                    <p:outputLabel value="Niveau enseigné : " />
+
+                    <p:outputLabel value="Jusqu'à quel niveau scholaire pouvez vous enseigner ?" />
+                    <p:selectOneMenu id="console" value="#{vueProf.monNouveauProf.niveauMaxP}" style="width:125px">
+                        <f:selectItem itemLabel="CP" itemValue="1" />
+                        <f:selectItem itemLabel="CE1" itemValue="2" />
+                        <f:selectItem itemLabel="CE2" itemValue="3" />
+                        <f:selectItem itemLabel="CM1" itemValue="4" />
+                        <f:selectItem itemLabel="CM2" itemValue="5" />
+                        <f:selectItem itemLabel="6eme" itemValue="6" />
+                        <f:selectItem itemLabel="5eme" itemValue="7" />
+                        <f:selectItem itemLabel="4eme" itemValue="8" />
+                        <f:selectItem itemLabel="3eme" itemValue="9" />
+                        <f:selectItem itemLabel="2nde" itemValue="10" />
+                        <f:selectItem itemLabel="1ere" itemValue="11" />
+                        <f:selectItem itemLabel="Terminale" itemValue="12" />
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+                <br />
+                <p:commandButton value="Modifier" action="#{vueProf.editProf()}" ajax="false"/> 
+                <br /><br />
+            </h:form>
+        </p:fieldset>
+        <footer>
+            <p>
+                Qui sommes-nous ?
+                <br />
+                Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
+                <br />
+                Rechercher un cours ou un professeur disponible devient plus facile.
+            </p>
+        </footer>     
 
     </h:body>
-    
+
 </html>

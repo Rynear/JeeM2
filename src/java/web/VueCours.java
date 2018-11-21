@@ -9,6 +9,8 @@ import dao.CoursFacadeLocal;
 import entity.Cours;
 import dao.ProfFacadeLocal;
 import entity.Prof;
+import dao.EleveFacadeLocal;
+import entity.Eleve;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -34,8 +36,14 @@ public class VueCours implements Serializable {
     CoursFacadeLocal coursDAO;
     @EJB
     ProfFacadeLocal profDAO;
+    @EJB
+    EleveFacadeLocal eleveDAO;
     private Cours monCours;
+    private Prof monProf;
+    private Eleve monEleve;
     private List<Cours> listCours;
+    private List<Prof> listProf;
+    private List<Eleve> listEleve;
     private List<Cours> listCoursSansEleve;
     private List<Cours> listCoursFinal;
     private Integer idC;
@@ -46,6 +54,54 @@ public class VueCours implements Serializable {
     private Integer recordIdCours;
     private Cours monNouveauCours;
     private Integer newIdProf;
+
+    public EleveFacadeLocal getEleveDAO() {
+        return eleveDAO;
+    }
+
+    public void setEleveDAO(EleveFacadeLocal eleveDAO) {
+        this.eleveDAO = eleveDAO;
+    }
+
+    public Prof getMonProf() {
+        return monProf;
+    }
+
+    public void setMonProf(Prof monProf) {
+        this.monProf = monProf;
+    }
+
+    public Eleve getMonEleve() {
+        return monEleve;
+    }
+
+    public void setMonEleve(Eleve monEleve) {
+        this.monEleve = monEleve;
+    }
+
+    public List<Prof> getListProf() {
+        return profDAO.findAll();
+    }
+
+    public void setListProf(List<Prof> listProf) {
+        this.listProf = listProf;
+    }
+
+    public List<Eleve> getListEleve() {
+        return eleveDAO.findAll();
+    }
+
+    public void setListEleve(List<Eleve> listEleve) {
+        this.listEleve = listEleve;
+    }
+
+    public List<Cours> getListCoursFinal() {
+        return listCoursFinal;
+    }
+
+    public void setListCoursFinal(List<Cours> listCoursFinal) {
+        this.listCoursFinal = listCoursFinal;
+    }
 
     
     

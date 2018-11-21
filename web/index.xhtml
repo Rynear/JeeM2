@@ -7,8 +7,8 @@
 
     <h:head>
         <title>Page d'acceuil</title>
-            <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
-            <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
+        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+        <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
     </h:head>
 
     <h:body>
@@ -23,7 +23,18 @@
                 <f:param name="i" value="2" />
             </p:menuitem>
         </p:tabMenu>
-     
+
+        <p:outputLabel value="Nombre de cours :" />
+        <p:outputLabel value="#{vueCharts.listCours.size()}"/>
+        <br />
+        <p:outputLabel value="Nombre de profs :" />
+        <p:outputLabel value="#{vueCharts.listProf.size()}"/>
+        <br />
+        <p:outputLabel value="Nombre d'élèves :" />
+        <p:outputLabel value="#{vueCharts.listEleve.size()}"/>
+        <br />
+   
+        
         <footer>
             <p>
                 Qui sommes-nous ?

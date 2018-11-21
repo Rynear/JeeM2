@@ -26,11 +26,12 @@ public class VueCours implements Serializable {
     CoursFacadeLocal coursDAO;
     private Cours monCours;
     private List<Cours> listCours;
+    private Integer idC;
     private Integer idE;
     private Integer idP;
     private Date dateC;
     private String comC;
-    private Integer recordIdCours;
+    
     
     /**
      * Creates a new instance of VueCours
@@ -87,12 +88,12 @@ public class VueCours implements Serializable {
         this.comC = comC;
     }
 
-    public Integer getRecordIdCours() {
-        return recordIdCours;
+    public Integer getIdC() {
+        return idC;
     }
 
-    public void setRecordIdCours(Integer recordIdCours) {
-        this.recordIdCours = recordIdCours;
+    public void setIdC(Integer idC) {
+        this.idC = idC;
     }
     
     /**

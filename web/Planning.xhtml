@@ -62,10 +62,8 @@
 
                             <h:outputText value="Les détails laissé par le professeur :" />
                             <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
-                            
-                            <p:link outcome="ReserverCours" value="Réserver ce cours">
-                                <f:param name="recordIdCours" value="#{vueCours.setRecordIdCours(item.idC)}" />
-                            </p:link>
+
+                            <p:commandButton value="Reserver ce cours" id="reservation" action="#{vueEleve.redirectionAndRecordNum(item.idC)}" style="margin-right:20px;" styleClass="ui-priority-primary" />
                             
                         </h:panelGrid>
                     </p:outputPanel>

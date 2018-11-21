@@ -129,7 +129,7 @@ public class VueProf implements Serializable {
     }
     
     public List<Prof> getListeProf() {
-    return profDAO.findAll();
+        return profDAO.findAll();
     }
 
     public void editProf(){

@@ -13,17 +13,17 @@
 
     <h:body>
         <p:tabMenu activeIndex="#{param.i}" class="center"> <!-- Provient de https://www.primefaces.org/showcase/ui/menu/tabMenu.xhtml -->
-            <p:menuitem value="Professeurs" outcome="Prof" icon="pi pi-briefcase">
+            <p:menuitem value="Professeurs" outcome="Prof" icon="ui-icon-star">
                 <f:param name="i" value="0" />
             </p:menuitem>
-            <p:menuitem value="Eleves" outcome="Eleve" icon="pi pi-user">
+            <p:menuitem value="Eleves" outcome="Eleve" icon="ui-icon-star">
                 <f:param name="i" value="1" />
             </p:menuitem>
-            <p:menuitem value="Planning" outcome="Planning" icon="pi pi-file">
+            <p:menuitem value="Planning" outcome="Planning" icon="ui-icon-clipboard">
                 <f:param name="i" value="2" />
             </p:menuitem>
         </p:tabMenu>
-
+     
         <footer>
             <p>
                 Qui sommes-nous ?

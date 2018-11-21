@@ -131,7 +131,7 @@ public class VueProf implements Serializable {
     public List<Prof> getListeProf() {
         return profDAO.findAll();
     }
-
+    
     public void editProf() {
         monAncienProf = profDAO.find(IdP);
         monAncienProf.setNomP(monNouveauProf.getNomP());

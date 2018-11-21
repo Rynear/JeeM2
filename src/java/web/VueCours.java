@@ -41,11 +41,16 @@ public class VueCours implements Serializable {
     private Cours monCours;
     private Prof monProf;
     private Eleve monEleve;
-    private List<Cours> listCours;
     private List<Prof> listProf;
     private List<Eleve> listEleve;
-    private List<Cours> listCoursSansEleve;
+    private List<Cours> listCours;
     private List<Cours> listCoursFinal;
+    private List<Cours> listCoursSansElevePrimaire;
+    private List<Cours> listCoursSansEleveCollege;
+    private List<Cours> listCoursSansEleveLycee;
+    private List<Prof> listProfInt;
+    private List<Prof> listProfCollege;
+    private List<Prof> listProfLycee;
     private Integer idC;
     private Integer idE;
     private Integer idP;
@@ -225,19 +230,100 @@ public class VueCours implements Serializable {
         this.profDAO = profDAO;
     }
 
-    public List<Cours> getListCoursSansEleve() {
-        listCoursSansEleve = coursDAO.findAll();
+    public List<Prof> getListProfInt() {
+        return listProfInt;
+    }
+
+    public void setListProfInt(List<Prof> listProfInt) {
+        this.listProfInt = listProfInt;
+    }
+    
+    public List<Prof> getListProfPrimaire(){
+        listProfInt = profDAO.findAll();
+        List<Prof> listProfFinal = new ArrayList<>();
+        for (int i = 0; i < listProfInt.size(); i++){
+            if (listProfInt.get(i).getNiveauMaxP() < 6){
+                listProfFinal.add(listProfInt.get(i));
+            }
+        }
+        return listProfFinal;
+    }
+    
+    public List<Prof> getListProfCollege(){
+        listProfCollege = profDAO.findAll();
+        List<Prof> listProfFinal = new ArrayList<>();
+        for (int i = 0; i < listProfCollege.size(); i++){
+            if (listProfCollege.get(i).getNiveauMaxP() > 5 && listProfCollege.get(i).getNiveauMaxP() < 10){
+                listProfFinal.add(listProfCollege.get(i));
+            }
+        }
+        return listProfFinal;
+    }
+    
+    public List<Prof> getListProfLycee(){
+        listProfLycee = profDAO.findAll();
+        List<Prof> listProfFinal = new ArrayList<>();
+        for (int i = 0; i < listProfLycee.size(); i++){
+            if (listProfLycee.get(i).getNiveauMaxP() >= 10){
+                listProfFinal.add(listProfLycee.get(i));
+            }
+        }
+        return listProfFinal;
+    }
+
+    public List<Cours> getListCoursSansElevePrimaire() {
+        listCoursSansElevePrimaire = coursDAO.findAll();
         List<Cours> listCoursFinal = new ArrayList<>();
-        for (int i = 0; i < listCoursSansEleve.size(); i++){
-            if (listCoursSansEleve.get(i).getIdE() == null){
-                listCoursFinal.add(listCoursSansEleve.get(i));
+        List<Prof> listProfPrimaire = new ArrayList<>();
+        listProfPrimaire = getListProfPrimaire();
+        for (int i = 0; i < listCoursSansElevePrimaire.size(); i++){
+            if (listCoursSansElevePrimaire.get(i).getIdE() == null){
+                for (int y = 0; y < listProfPrimaire.size(); y++){
+                    if (listCoursSansElevePrimaire.get(i).getIdP().getIdP() == listProfPrimaire.get(y).getIdP()){
+                        listCoursFinal.add(listCoursSansElevePrimaire.get(i));
+                    }
+                }
+            }
+        }
+        return listCoursFinal;
+    }
+    
+        public List<Cours> getListCoursSansEleveCollege() {
+        listCoursSansEleveCollege = coursDAO.findAll();
+        List<Cours> listCoursFinal = new ArrayList<>();
+        List<Prof> listProfCollege = new ArrayList<>();
+        listProfCollege = getListProfCollege();
+        for (int i = 0; i < listCoursSansEleveCollege.size(); i++){
+            if (listCoursSansEleveCollege.get(i).getIdE() == null){
+                for (int y = 0; y < listProfCollege.size(); y++){
+                    if (listCoursSansEleveCollege.get(i).getIdP().getIdP() == listProfCollege.get(y).getIdP()){
+                        listCoursFinal.add(listCoursSansEleveCollege.get(i));
+                    }
+                }
+            }
+        }
+        return listCoursFinal;
+    }
+    
+    public List<Cours> getListCoursSansEleveLycee() {
+        listCoursSansEleveLycee = coursDAO.findAll();
+        List<Cours> listCoursFinal = new ArrayList<>();
+        List<Prof> listProfLycee = new ArrayList<>();
+        listProfLycee = getListProfLycee();
+        for (int i = 0; i < listCoursSansEleveLycee.size(); i++){
+            if (listCoursSansEleveLycee.get(i).getIdE() == null){
+                for (int y = 0; y < listProfLycee.size(); y++){
+                    if (listCoursSansEleveLycee.get(i).getIdP().getIdP() == listProfLycee.get(y).getIdP()){
+                        listCoursFinal.add(listCoursSansEleveLycee.get(i));
+                    }
+                }
             }
         }
         return listCoursFinal;
     }
 
-    public void setListCoursSansEleve(List<Cours> listCoursSansEleve) {
-        this.listCoursSansEleve = listCoursSansEleve;
+    public void setListCoursSansElevePrimaire(List<Cours> listCoursSansElevePrimaire) {
+        this.listCoursSansElevePrimaire = listCoursSansElevePrimaire;
     }
 
     public Integer getRecordIdCours() {

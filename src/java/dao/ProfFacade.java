@@ -29,4 +29,11 @@ public class ProfFacade extends AbstractFacade<Prof> implements ProfFacadeLocal 
         super(Prof.class);
     }
     
+    public int ReturnCountProf(){
+        return (int) em.createNamedQuery("Prof.countProf").getSingleResult();
+    }
+    
+    public Prof findBySexeP(int i){
+        return (Prof) em.createNamedQuery("Prof.findBySexeP").setParameter("sexeP", i).getSingleResult();
+    }
 }

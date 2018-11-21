@@ -30,4 +30,7 @@ public interface ProfFacadeLocal {
 
     int count();
     
+    int ReturnCountProf();
+    
+    Prof findBySexeP(int i);
 }

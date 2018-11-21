@@ -35,43 +35,92 @@
                 border-bottom-color: var(--input-border-color, #A8A8A8);
             }
         </style>
-        <h:form>
-            <p:growl id="choixDuNiveau" showDetail="true" />
-            <p:fieldset collapsed="true" legend="Proposer un cours :" toggleable="true" toggleSpeed="500" class="center">
-
-            </p:fieldset>
-        </h:form>
 
         <br/>
         <br/>
         <br/>
 
-        <h:form> 
-            <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
-            <p:dataScroller value="#{vueCours.listCoursSansEleve}" var="item" chunkSize="10" class="center">
-                <f:facet name="header">
-                    Les cours proposés par des enseignants
-                </f:facet>
-                <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                    <p:graphicImage url="resources/#{item.idP.sexeP}.jpg" />
-                    <p:outputPanel>
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Le/La professeur :" />
-                            <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+        <p:fieldset collapsed="true" legend="Les cours en primaire" toggleable="true" toggleSpeed="500">
+            <h:form> 
+                <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
+                <p:dataScroller value="#{vueCours.listCoursSansElevePrimaire}" var="item" chunkSize="10" class="center">
+                    <f:facet name="header">
+                        Les cours proposés par des enseignants du primaire 
+                    </f:facet>
+                    <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                        <p:graphicImage url="resources/#{item.idP.sexeP}.jpg" />
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Le/La professeur :" />
+                                <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+                                <h:outputText value="La date proposé par le professeur :" />
+                                <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
+                                <h:outputText value="Les détails laissé par le professeur :" />
+                                <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
+                                <p:commandButton value="Reserver ce cours" id="reservation" action="#{vueEleve.redirectionAndRecordNum(item.idC)}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </h:form>
+        </p:fieldset>
 
-                            <h:outputText value="La date proposé par le professeur :" />
-                            <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
+        <br/>
+        <br/>
+        <br/>
 
-                            <h:outputText value="Les détails laissé par le professeur :" />
-                            <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
+        <p:fieldset collapsed="true" legend="Les cours au collège" toggleable="true" toggleSpeed="500">
+            <h:form> 
+                <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
+                <p:dataScroller value="#{vueCours.listCoursSansEleveCollege}" var="item" chunkSize="10" class="center">
+                    <f:facet name="header">
+                        Les cours proposés par des enseignants du Collège 
+                    </f:facet>
+                    <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                        <p:graphicImage url="resources/#{item.idP.sexeP}.jpg" />
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Le/La professeur :" />
+                                <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+                                <h:outputText value="La date proposé par le professeur :" />
+                                <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
+                                <h:outputText value="Les détails laissé par le professeur :" />
+                                <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
+                                <p:commandButton value="Reserver ce cours" id="reservation" action="#{vueEleve.redirectionAndRecordNum(item.idC)}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </h:form>
+        </p:fieldset>
+        <br/>
+        <br/>
+        <br/>
 
-                            <p:commandButton value="Reserver ce cours" id="reservation" action="#{vueEleve.redirectionAndRecordNum(item.idC)}" style="margin-right:20px;" styleClass="ui-priority-primary" />
-                            
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </p:dataScroller>
-        </h:form>
+        <p:fieldset collapsed="true" legend="Les cours au Lycée" toggleable="true" toggleSpeed="500">
+            <h:form> 
+                <!--provient de :  https://www.primefaces.org/showcase/ui/data/datascroller/basic.xhtml-->
+                <p:dataScroller value="#{vueCours.listCoursSansEleveLycee}" var="item" chunkSize="10" class="center">
+                    <f:facet name="header">
+                        Les cours proposés par des enseignants au Lyée 
+                    </f:facet>
+                    <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                        <p:graphicImage url="resources/#{item.idP.sexeP}.jpg" />
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputText value="Le/La professeur :" />
+                                <h:outputText value="#{item.idP.prenomP}, #{item.idP.nomP}" style="font-weight: bold"/>
+                                <h:outputText value="La date proposé par le professeur :" />
+                                <h:outputText value="#{item.dateHeureC}" style="font-weight: bold"/>
+                                <h:outputText value="Les détails laissé par le professeur :" />
+                                <h:outputText value="#{item.commentaireC}" style="font-weight: bold"/>
+                                <p:commandButton value="Reserver ce cours" id="reservation" action="#{vueEleve.redirectionAndRecordNum(item.idC)}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+                            </h:panelGrid>
+                        </p:outputPanel>
+                    </h:panelGrid>
+                </p:dataScroller>
+            </h:form>
+        </p:fieldset>
 
 
         <footer>

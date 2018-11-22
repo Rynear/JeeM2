@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <h:head>
         <title>Réservation du cours</title>
         <a href="index.xhtml">
@@ -14,30 +14,32 @@
     </h:head>
     <h:body>
         <p:growl id="msgs" showDetail="true" />
-        <h:form>
-                
-            <p:fieldset legend="Renseigner les paramètres de votre cours ! :" toggleable="true" toggleSpeed="500">
-                <p:outputLabel for="datetime" value="Choisissez la date et l'heure du cours: " />
-                <p:calendar id="datetime" value="#{vueProf.dateNewCours}" pattern="MM/dd/yyyy HH:mm:ss" />
-                <br />
+        <br />
+        <p:fieldset legend="Renseigner les paramètres de votre cours ! :" toggleable="true" toggleSpeed="500">
+            <h:panelGrid columns="2" cellpadding="5">   
+                <h:form>
 
-                <p:outputLabel value="Commentaire (optionnel) :" />
-                <p:inputText value="#{vueProf.newComment}"/>
-                <br />
+                    <p:outputLabel for="datetime" value="Choisissez la date et l'heure du cours: " />
+                    <p:calendar id="datetime" value="#{vueProf.dateNewCours}" pattern="MM/dd/yyyy HH:mm:ss" />
+                    <br />
 
-                <p:commandButton value="J'y vais" action="#{vueProf.createNewCours()}" ajax="false" update="msg"/>                
-                <br />
+                    <p:outputLabel value="Commentaire (optionnel) :" />
+                    <p:inputText value="#{vueProf.newComment}"/>
+                    <br />
 
-                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
-                        <h:outputText value="Vous venez de planifier votre disponibilité pour ce créneau: " />
-                        <h:outputText value="#{vueCours.monNouveauCours.dateHeureC}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                    </p:panelGrid>
-                </p:dialog>
-            </p:fieldset>    
-            
-        </h:form>
+                    <p:commandButton value="Je propose mon cours" action="#{vueProf.createNewCours()}" ajax="false" update="msg"/>                
+                    <br />
+
+                    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                            <h:outputText value="Vous venez de planifier votre disponibilité pour ce créneau: " />
+                            <h:outputText value="#{vueCours.monNouveauCours.dateHeureC}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:panelGrid>
+                    </p:dialog>
+                </h:form>
+            </h:panelGrid>
+        </p:fieldset>  
     </h:body>
 </html>

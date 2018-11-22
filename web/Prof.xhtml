@@ -12,7 +12,7 @@
             <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
         </a>
     </h:head>
-
+    <br />
     <h:body>
         <p:growl id="msgs" showDetail="true" />
         <p:fieldset collapsed="true" legend="Vous êtes nouveau ici, inscrivez-vous :" toggleable="true" toggleSpeed="500">
@@ -54,33 +54,34 @@
 
                     </h:panelGrid>
                     <br />
-                    <p:commandButton value="M'enregistrer" action="#{vueProf.addNewProf()}" ajax="false" update="msg"/>
+                    <p:commandButton value="M'inscrire" action="#{vueProf.addNewProf()}" ajax="false" update="msg"/>
                     <br /><br />
                 </h:form>
             </h:panelGrid>
         </p:fieldset>
-
+        <br />
         <p:fieldset collapsed="true" legend="Vous souhaitez proposer un cours:" toggleable="true" toggleSpeed="500">
             <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
             <h:form id="AddNewCours">
-                Veuillez-vous authentifier d'abord :
+                Pour commencer, remplissez le formulaire suivant :
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel value="Votre nom :" />
+                    <p:inputText value="#{vueProf.nomP}"/>
+
+                    <p:outputLabel value="Votre prénom :" />
+                    <p:inputText value="#{vueProf.prenomP}"/>
+
+                    <p:outputLabel value="Votre mot de passe :" />
+                    <h:inputSecret value="#{vueProf.mdpP}"/>
+                    <br />
+                    <p:commandButton value="Je m'identifie" action="#{vueProf.loginPropoCours()}" ajax="false" update="msg"/>
+                </h:panelGrid>
                 <br />
-                <p:outputLabel value="Votre nom :" />
-                <p:inputText value="#{vueProf.nomP}"/>
-
-                <p:outputLabel value="Votre prénom :" />
-                <p:inputText value="#{vueProf.prenomP}"/>
-
-                <p:outputLabel value="Definissez votre mot de passe :" />
-                <h:inputSecret value="#{vueProf.mdpP}"/>
-
-                <br />
-                <p:commandButton value="Je m'inscris" action="#{vueProf.loginPropoCours()}" ajax="false" update="msg"/>
-                <br /><br />
 
             </h:form>
         </p:fieldset>
-
+        <br />
         <p:fieldset collapsed="true" legend="Liste de vos collègues" toggleable="true" toggleSpeed="500">
             <h:form id="ListeProf">
                 <p:dataTable var="item" value="#{vueProf.listeProf}">
@@ -103,23 +104,23 @@
                 </p:dataTable>    
             </h:form>
         </p:fieldset>
-
-        <p:fieldset collapsed="true" legend="Mofidier un profil de professeur" toggleable="true" toggleSpeed="500">
+        <br />
+        <p:fieldset collapsed="true" legend="Mofidier votre profil de professeur" toggleable="true" toggleSpeed="500">
             <h:form>
                 Veuillez-vous authentifier d'abord :
-                <br />
-                <p:outputLabel value="Votre nom :" />
-                <p:inputText value="#{vueProf.nomP}"/>
+                <h:panelGrid columns="2" cellpadding="5">
 
-                <p:outputLabel value="Votre prénom :" />
-                <p:inputText value="#{vueProf.prenomP}"/>
+                    <p:outputLabel value="Votre nom :" />
+                    <p:inputText value="#{vueProf.nomP}"/>
 
-                <p:outputLabel value="Definissez votre mot de passe :" />
-                <h:inputSecret value="#{vueProf.mdpP}"/>
+                    <p:outputLabel value="Votre prénom :" />
+                    <p:inputText value="#{vueProf.prenomP}"/>
 
-                <br />
-                <p:commandButton value="Je m'inscris" action="#{vueProf.loginModifCours()}" ajax="false" update="msg"/>
-                <br /><br />
+                    <p:outputLabel value="Definissez votre mot de passe :" />
+                    <h:inputSecret value="#{vueProf.mdpP}"/>
+
+                    <p:commandButton value="Je m'identifie" action="#{vueProf.loginModifCours()}" ajax="false" update="msg"/>
+                </h:panelGrid>
             </h:form>
         </p:fieldset>
         <footer>

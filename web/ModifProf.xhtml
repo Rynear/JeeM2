@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Réservation du cours</title>
+        <a href="index.xhtml">
+            <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+            <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
+        </a>    
+    </h:head>
+    <h:body>
+        <p:growl id="msgs" showDetail="true" />
+        <h:form>
+            <p:fieldset legend="Quels sont vos changement ! :" toggleable="true" toggleSpeed="500">
+                <p:outputLabel value="Nouvelles infos :" /> <br /><br /> 
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Jusqu'à quel niveau scholaire pouvez vous enseigner ?" />
+                    <p:selectOneMenu id="console" value="#{vueProf.monNouveauProf.niveauMaxP}" style="width:125px">
+                        <f:selectItem itemLabel="CP" itemValue="1" />
+                        <f:selectItem itemLabel="CE1" itemValue="2" />
+                        <f:selectItem itemLabel="CE2" itemValue="3" />
+                        <f:selectItem itemLabel="CM1" itemValue="4" />
+                        <f:selectItem itemLabel="CM2" itemValue="5" />
+                        <f:selectItem itemLabel="6eme" itemValue="6" />
+                        <f:selectItem itemLabel="5eme" itemValue="7" />
+                        <f:selectItem itemLabel="4eme" itemValue="8" />
+                        <f:selectItem itemLabel="3eme" itemValue="9" />
+                        <f:selectItem itemLabel="2nde" itemValue="10" />
+                        <f:selectItem itemLabel="1ere" itemValue="11" />
+                        <f:selectItem itemLabel="Terminale" itemValue="12" />
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <p:commandButton value="Modifier" action="#{vueProf.editProf()}" ajax="false"/> 
+                <br /><br />
+            </p:fieldset>    
+            
+        </h:form>
+    </h:body>
+</html>

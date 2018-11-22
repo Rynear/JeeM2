@@ -25,11 +25,11 @@ BODY 	{
 }
 
 footer {
-   margin-left: 20%;
-   margin-right: 20%;
+   margin-left: 10%;
+   margin-right: 10%;
    left: 0;
    bottom: 0;
-   width: 60%;
+   width: 80%;
    background-color: #A91101;
    color: white;
    text-align: center;

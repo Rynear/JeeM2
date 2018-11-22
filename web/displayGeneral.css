@@ -39,3 +39,10 @@ fieldset{
    margin-left: 10%;
    margin-right: 10%;
 }
+
+.egg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}

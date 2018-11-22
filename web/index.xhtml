@@ -21,13 +21,25 @@
             </p:menuitem>
             <p:menuitem value="Planning" outcome="Planning" icon="ui-icon-clipboard">
                 <f:param name="i" value="2" />
-            </p:menuitem>
+            </p:menuitem>   
         </p:tabMenu>
 
 
         <h:form>
             <p:poll interval="3" update="Statistiques" />
-            <p:chart id="Statistiques" type="pie" model="#{vueCharts.livePModel}" class="center" style="width:80% ;height:700px"/>
+
+<!--            <p:chart id="Statistiques" type="pie" model="#{vueCharts.livePModel}" class="center" style="width:80% ;height:700px"/>-->
+
+            <p:chart id="Statistiques" type="pie" model="#{vueCharts.livePModel}" class="center" style="width:800px;height:700px"/>
+            <h:panelGrid columns="1" cellpadding="10">
+                <p:commandButton value="Easter Egg" type="button" onclick="PF('dlg3').show();" /> 
+            </h:panelGrid>
+            <p:dialog header="Easter Egg" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" width="900" height="400">
+                <h:outputText class="center" value="23 à 0 ! C'est la piquette Jack ! Tu sais pas jouer Jack ! T'es mauvais !" />
+                <br />
+                <h:graphicImage class="center" url="resources/oss117.gif" />
+            </p:dialog>
+
         </h:form>
 
         <footer>
@@ -39,6 +51,8 @@
                 Rechercher un cours ou un professeur disponible devient plus facile.
             </p>
         </footer>
+
+
     </h:body>
 
 </html>

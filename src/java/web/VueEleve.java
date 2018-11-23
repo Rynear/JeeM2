@@ -186,16 +186,22 @@ public class VueEleve implements Serializable {
         this.numCours = numCours;
     }
     
-    public void editEleve() {
+    public String editEleve() {
         monAncienEleve = eleveDAO.find(IdE);
-        monAncienEleve.setAgeE(monNouveauEleve.getAgeE());
+//        monAncienEleve.setAgeE(monNouveauEleve.getAgeE());
         monAncienEleve.setNiveauE(monNouveauEleve.getNiveauE());
         eleveDAO.edit(monAncienEleve);
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Successful !! Modifications réalisés avec succès.  "));
+        return "index.xhtml?faces-redirect=true";
     }
     
     public String redirectionAndRecordNum(Integer cours){
+        setNumCours(cours);
+        return "ReserverCours.xhtml?faces-redirect=true";
+    }
+    
+    public String redirectionAndRecordIdEleve(Integer cours){
         setNumCours(cours);
         return "ReserverCours.xhtml?faces-redirect=true";
     }
@@ -216,6 +222,27 @@ public class VueEleve implements Serializable {
                      monAncienCours.setIdE(eleve);
                      coursDAO.edit(monAncienCours);
                      return "index.xhtml?faces-redirect=true";
+                 }
+            }
+        context.addMessage(null, new FacesMessage("Mot de passe ou login invalide, veuillez réessayer"));    
+        return null;
+        }
+    }
+    
+    public String loginModifEleve() {
+        List<Eleve> listEleveLogin = eleveDAO.findAll();
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (nomE.equals("") || prenomE.equals("") || mdpE.equals("")){
+            nomE="";
+            prenomE="";
+            mdpE="";
+            return null;
+        } else {
+            for (Eleve eleve : listEleveLogin){
+                 if((eleve.getNomE().equals(nomE)) && (eleve.getPrenomE().equals(prenomE)) && (eleve.getMdpE().equals(mdpE))){
+                     context.addMessage(null, new FacesMessage("Authentificaiton réussi"));
+                     setIdE(eleve.getIdE());
+                     return "ModifEleve.xhtml?faces-redirect=true";
                  }
             }
         context.addMessage(null, new FacesMessage("Mot de passe ou login invalide, veuillez réessayer"));    

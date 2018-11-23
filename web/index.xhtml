@@ -31,14 +31,6 @@
 <!--            <p:chart id="Statistiques" type="pie" model="#{vueCharts.livePModel}" class="center" style="width:80% ;height:700px"/>-->
 
             <p:chart id="Statistiques" type="pie" model="#{vueCharts.livePModel}" class="center" style="width:800px;height:700px"/>
-            <h:panelGrid columns="1" cellpadding="10">
-                <p:commandButton value="Easter Egg" type="button" onclick="PF('dlg3').show();" /> 
-            </h:panelGrid>
-            <p:dialog header="Easter Egg" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" width="900" height="400">
-                <h:outputText class="center" value="23 à 0 ! C'est la piquette Jack ! Tu sais pas jouer Jack ! T'es mauvais !" />
-                <br />
-                <h:graphicImage class="center" url="resources/oss117.gif" />
-            </p:dialog>
 
         </h:form>
 
@@ -49,6 +41,17 @@
                 Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
                 <br />
                 Rechercher un cours ou un professeur disponible devient plus facile.
+                <br />
+                <div align="center">
+                    <h:panelGrid columns="1" cellpadding="10">
+                        <p:commandButton value="Easter Egg" type="button" onclick="PF('dlg3').show();" /> 
+                    </h:panelGrid>
+                </div>
+                <p:dialog header="Easter Egg" widgetVar="dlg3" showEffect="puff" hideEffect="explode" width="900" height="400">
+                    <h:outputText class="center" value="23 à 0 ! C'est la piquette Jack ! Tu sais pas jouer Jack ! T'es mauvais !" />
+                    <br />
+                    <h:graphicImage class="center" url="resources/oss117.gif" />
+                </p:dialog>
             </p>
         </footer>
 

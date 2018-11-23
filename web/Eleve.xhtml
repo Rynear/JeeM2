@@ -12,6 +12,9 @@
             <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
         </a>
     </h:head>
+
+    <br />
+
     <h:body>
 
         <p:growl id="msgs" showDetail="true" />
@@ -57,15 +60,16 @@
                     </h:panelGrid>
                     <br />
                     <p:commandButton value="M'enregistrer" action="#{vueEleve.addNewEleve()}" ajax="false" update="msg"/>
-                    <br /><br />
+                    <br />
                 </h:form>
             </h:panelGrid>
         </p:fieldset>
-
+        <br />
         <p:fieldset collapsed="true" legend="Tu souhaites modifier ton profil" toggleable="true" toggleSpeed="500">
             <h:form>
                 Veuillez-vous authentifier d'abord :
                 <br />
+
                 <p:outputLabel value="Votre nom :" />
                 <p:inputText value="#{vueEleve.nomE}"/>
 
@@ -76,7 +80,7 @@
                 <h:inputSecret value="#{vueEleve.mdpE}"/>
 
                 <br />
-                <p:commandButton value="Je m'inscris" action="#{vueEleve.loginModifEleve()}" ajax="false" update="msg"/>
+                <p:commandButton value="Login" action="#{vueEleve.loginModifEleve()}" ajax="false" update="msg"/>
                 <br /><br />
 
             </h:form>

@@ -4,29 +4,49 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <h:head>
         <title>Réservation du cours</title>
-        <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
+        <a href="index.xhtml">
+            <link rel="stylesheet" type="text/css" href="displayGeneral.css"></link>
             <img src="resources/coursParticuliers.png" alt="Mon image" width="1435" height="500" class="center"/>
+        </a>
     </h:head>
+
+    <br />
+
     <h:body>
         <p:growl id="msgs" showDetail="true" />
-        <h:form class="center">
-            <p:fieldset legend="Veuillez vous identifier avant de vous inscrire à ce cours :" toggleable="true" toggleSpeed="500">
-                <p:outputLabel value="Votre nom :" />
-                <p:inputText value="#{vueEleve.nomE}"/>
 
-                <p:outputLabel value="Votre prénom :" />
-                <p:inputText value="#{vueEleve.prenomE}"/>
 
-                <p:outputLabel value="Definissez votre mot de passe :" />
-                <h:inputSecret value="#{vueEleve.mdpE}"/>
+        <p:fieldset legend="Veuillez vous identifier avant de vous inscrire à ce cours :" toggleable="true" toggleSpeed="500">
+            <h:form class="center">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="Votre nom :" />
+                    <p:inputText value="#{vueEleve.nomE}"/>
 
+                    <p:outputLabel value="Votre prénom :" />
+                    <p:inputText value="#{vueEleve.prenomE}"/>
+
+                    <p:outputLabel value="Votre mot de passe :" />
+                    <h:inputSecret value="#{vueEleve.mdpE}"/>
+
+                    <br />
+                    <p:commandButton value="Je m'inscris" action="#{vueEleve.login}" ajax="false" update="msg"/>
+                </h:panelGrid>
+            </h:form>
+        </p:fieldset>
+
+
+        <footer>
+            <p>
+                Qui sommes-nous ?
                 <br />
-                <p:commandButton value="Je m'inscris" action="#{vueEleve.login}" ajax="false" update="msg"/>
-                <br /><br />
-            </p:fieldset>
-        </h:form>
+                Deux étudiants souhaitant aider les élèves dans leur recherche de cours particuliers.
+                <br />
+                Rechercher un cours ou un professeur disponible devient plus facile.
+            </p>
+        </footer>
+
     </h:body>
 </html>
